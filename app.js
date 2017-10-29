@@ -12,7 +12,6 @@ var bodyParser = require('body-parser');
 var errorHandler = require('errorhandler');
 var cookieParser = require('cookie-parser');
 var MongoStore = require('connect-mongo')(session);
-
 var app = express();
 
 app.locals.pretty = true;
@@ -31,10 +30,10 @@ var dbHost = process.env.DB_HOST || 'localhost'
 var dbPort = process.env.DB_PORT || 27017;
 var dbName = process.env.DB_NAME || 'node-login';
 
-var dbURL = 'mongodb://'+dbHost+':'+dbPort+'/'+dbName;
+
 if (app.get('env') == 'live'){
 // prepend url with authentication credentials // 
-	dbURL = 'mongodb://'+process.env.DB_USER+':'+process.env.DB_PASS+'@'+dbHost+':'+dbPort+'/'+dbName;
+	dbURL = 'mongodb://<dbuser>:<dbpassword>@ds239965.mlab.com:39965/socialbuzzdb';
 }
 
 app.use(session({
